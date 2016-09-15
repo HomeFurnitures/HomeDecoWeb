@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Home Deco</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="assets/images/favicon/home-16-140131.png" type="image/png" sizes="16x16">
+
+    <!-- CSS Libraries -->
+    <link href="assets/libs/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Angular Libraries -->
+    <script src="assets/libs/angular.min.js"></script>
+    <script src="assets/libs/angular-ui-router.min.js"></script>
+
+    <!-- Application Scripts -->
+    <script src="app/app.config.js"></script>
+    <script src="app/app.states.js"></script>
+
+    <!-- Shared Scripts -->
+    <script src="app/shared/appController.js"></script>
+
+    <!-- Home Scripts -->
+    <script src="app/components/home/homeController.js"></script>
+    <script src="app/components/home/homeService.js"></script>
+
+    <!-- Products Scripts -->
+    <script src="app/components/productCollection/productCollectionController.js"></script>
+    <script src="app/components/productCollection/productCollectionService.js"></script>
+
+    <!-- About Scripts -->
+    <script src="app/components/about/aboutController.js"></script>
+
+    <!-- Custom Styles -->
+    <link href="assets/css/appStyle.css" rel="stylesheet">
+
+</head>
+
+<!-- apply our angular app to our site -->
+<body ng-app="HomeDeco">
+
+<!-- APP CONTENT -->
+<div ui-view class="container"></div>
+
+</body>
+</html>
