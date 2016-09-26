@@ -1,56 +1,64 @@
 (function () {
     'use strict';
 
-    angular.module('HomeDeco').config( HomeDeco );
+    angular.module('HomeDeco').config(InitStates);
 
-    HomeDeco.$inject = [ '$stateProvider', '$urlRouterProvider' ];
+    InitStates.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    function HomeDeco($stateProvider, $urlRouterProvider) {
+    function InitStates($stateProvider, $urlRouterProvider) {
 
         // Any unknown URLS go to index
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/');
 
         // No route goes to index
-        $urlRouterProvider.when('', '/home');
+        $urlRouterProvider.when('', '/');
 
         // Use a state provider for routing
         $stateProvider
-            .state('app', {
+            .state('login', {
+                url: '/login',
+                templateUrl: 'app/components/login/loginView.html',
+                controller: 'LoginController',
+                controllerAs: 'vm'
+            })
+            
+            .state('main', {
                 url: '',
                 abstract: true,
                 views: {
                     '@': {
-                        templateUrl: 'app/shared/appView.html',
-                        controller: 'AppController',
+                        templateUrl: 'app/components/main/mainView.html',
+                        controller: 'MainController',
                         controllerAs: 'vm'
                     }
                 }
             })
 
-            .state('app.home', {
+            .state('main.home', {
                 url: '/home',
-                templateUrl: 'app/components/home/homeView.html',
+                templateUrl: 'app/components/main.home/homeView.html',
                 controller: 'HomeController',
                 controllerAs: 'vm'
             })
 
-            .state('app.productCollection', {
+            .state('main.productCollection', {
                 url: '/products',
-                templateUrl: 'app/components/productCollection/productCollectionView.html',
+                tab: 'products',
+                templateUrl: 'app/components/main.productCollection/productCollectionView.html',
                 controller: 'ProductCollectionController',
                 controllerAs: 'vm'
             })
 
-            .state('app.product', {
+            .state('main.product', {
                 url: '/product/:id',
-                templateUrl: 'app/components/product/productView.html',
+                templateUrl: 'app/components/main.product/productView.html',
                 controller: 'ProductController',
                 controllerAs: 'vm'
             })
 
-            .state('app.about', {
+            .state('main.about', {
                 url: '/about',
-                templateUrl: 'app/components/about/aboutView.html',
+                templateUrl: 'app/components/main.about/aboutView.html',
                 controller: 'AboutController',
                 controllerAs: 'vm'
             });

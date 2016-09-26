@@ -1,0 +1,8 @@
+<div class="tab-container no-select">
+    <div ng-repeat="tab in vm.tabs" ng-click="vm.openTab(tab.state)" class="tab" ng-class="{'active': tab.state == vm.activeTab}">
+        <div class="tab-content">{{tab.name}}</div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div ui-view class="view-container"></div>

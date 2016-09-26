@@ -1,45 +1,43 @@
-(function() {
+(function () {
 
     'use strict';
-    
+
     angular.module('HomeDeco')
         .factory('Storage', Storage);
 
     Storage.$inject = ['$exceptionHandler'];
 
-    function Storage( $exceptionHandler ) {
-        var Storage = {
-            setItem    : setItem,
-            getItem    : getItem,
-            pushItem   : pushItem,
-            removeItem : removeItem
-        }
-
-        return Storage;
+    function Storage($exceptionHandler) {
+        var storage = {};
+        storage.setItem = setItem;
+        storage.getItem = getItem;
+        storage.pushItem = pushItem;
+        storage.removeItem = removeItem;
+        return storage;
 
         /**
-         * Adding an object to localStorage
+         * Adding an object to Storage
          *
-         * @param String name          Value's name
-         * @param Object/Array item    The value
+         * @param name String
+         * @param item Object
          */
         function setItem(name, item) {
-            sessionStorage.setItem(name, JSON.stringify(item));            
+            sessionStorage.setItem(name, JSON.stringify(item));
         }
 
         /**
-         * Getting an item from Storage 
+         * Getting an item from Storage
          *
-         * @param String name        Value's name
+         * @param name String
          */
         function getItem(name) {
             var value = sessionStorage.getItem(name);
 
-            //prevent crash when trying to parse json from a string | We need to check if the item is object or not
+            //prevent crash when trying to parse json from a string
             try {
                 value = JSON.parse(value);
             }
-            catch(e) { 
+            catch (e) {
                 console.log(e);
             }
 
@@ -51,8 +49,8 @@
          * Pushing an object into an array of objects in localStorage
          * If the array does not exist, creates it
          *
-         * @param String name        The name of the key in storage
-         * @param Object item        The object to push
+         * @param name String
+         * @param item Object
          */
         function pushItem(name, item) {
             // Parse the serialized data back into an aray of objects
@@ -70,7 +68,8 @@
 
         /**
          * Removing a value from sessionStorage
-         * @param string                Value's name
+         *
+         * @param name String
          */
         function removeItem(name) {
             var value = sessionStorage.getItem(name);
@@ -79,5 +78,5 @@
                 sessionStorage.removeItem(name);
             }
         }
-    };
+    }
 })();

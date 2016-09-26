@@ -1,8 +1,18 @@
-html,body {
+html, body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 
 .container { 
@@ -10,41 +20,110 @@ html,body {
 	max-height: 100%;
     width: 100%;
 	height: 100%;
-    padding: 0;  
-    margin: 0;	
+    padding: 0 5px;
+    margin: 0;
 }
 
 .view-container {
-     
+    height: calc(100% - 50px);
+    padding: 15px;
+    z-index: 1;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+    background: #fb955e; /* Old browsers */
+    background: -webkit-gradient(linear,left top,left bottom, color-stop(0%, #feccb1), color-stop(50%, #f17432), color-stop(51%, #ea5507), color-stop(100%, #fb955e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(90deg, #feccb1 0%, #f17432 50%, #ea5507 51%, #fb955e 100%); /* Chrome10+,Safari5.1+ */
+    background: -moz-linear-gradient(90deg, #feccb1 0%, #f17432 50%, #ea5507 51%, #fb955e 100%); /* FF3.6+ */
+    background: -ms-linear-gradient(90deg, #feccb1 0%, #f17432 50%, #ea5507 51%, #fb955e 100%); /* IE10+ */
+    background: -o-linear-gradient(90deg, #feccb1 0%, #f17432 50%, #ea5507 51%, #fb955e 100%); /* Opera 11.10+ */
+    background: linear-gradient(00deg, #fb955e 0%, #f17432 50%, #ea5507 51%, #fb955e 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb955e', endColorstr='#feccb1', GradientType=0); /* IE6-9 fallback on horizontal gradient */
 }
 
-.top-bar {
-    width: 100%;
-    height: 50px;
-    background: #CACACA;
+/**
+ * Tab menu
+ */
+
+.tab-container {
+    height: 45px;
+    padding: 0 0 0 25px;
+    color: #f17432;
+    font-size: 14pt;
 }
 
-.top-bar ul {
-    list-style: none;
+.tab {
+    width: 200px;
+    height: 45px;
     position: relative;
-    top: 8px;
-}
-
-.top-bar li {
+    top: 1px;
     display: inline-block;
+    background: #feccb1;
+    border-bottom: 0 none;
+    cursor: pointer;
+
+    -webkit-border-radius: 10px 10px 2px 2px;
+    -moz-border-radius: 10px 10px 2px 2px;
+    border-radius: 10px 10px 0 0;
+
+    -webkit-box-shadow: inset 0 3px 3px -3px #f17432, inset 3px 0 3px -3px #f17432, inset -3px 0 3px -3px #f17432;
+    -moz-box-shadow: inset 0 3px 3px -3px #f17432, inset 3px 0 3px -3px #f17432, inset -3px 0 3px -3px #f17432;
+    box-shadow: inset 0 3px 3px -3px #f17432, inset 3px 0 3px -3px #f17432, inset -3px 0 3px -3px #f17432;
+
+    -webkit-transform: perspective(100px) rotateX(30deg);
+    -moz-transform: perspective(100px) rotateX(30deg);
+    -ms-transform: perspective(100px) rotateX(30deg);
+    transform: perspective(100px) rotateX(30deg);
 }
 
-table {
-    border: 1px solid #585858;
-    margin: 25px;
-}
-
-tr {
-    border: 1px solid #585858;
-}
-
-th, td {
-    max-width: 310px;
+.tab-content {
+    position: relative;
+    top: 15px;
     text-align: center;
-    margin: 5px;
+
+    -webkit-transform: perspective(100px) rotateX(-27deg);
+    -moz-transform: perspective(100px) rotateX(-27deg);
+    -ms-transform: perspective(100px) rotateX(-27deg);
+    transform: perspective(100px) rotateX(-27deg);
+}
+
+.tab:hover {
+    color: #ffffff;
+}
+
+.tab.active {
+    box-sizing: content-box;
+    background-color: #fb955e;
+    color: #ffffff;
+    padding-bottom: 1px;
+    cursor: default;
+    z-index: 2;
+
+    -webkit-border-radius: 10px 10px 2px 2px;
+    -moz-border-radius: 10px 10px 2px 2px;
+    border-radius: 10px 10px 2px 2px;
+
+    -webkit-box-shadow: 0 0; /* Safari 3.1-5.0, Chrome 4.0-9.0 */
+    -moz-box-shadow: 0 0; /* Firefox 3.5-4.0 */
+    box-shadow: 0 0;
+}
+
+/**
+ * Page style
+ */
+
+.page-container {
+    background-color: #f8ffe0;
+    width: 100%;
+    height: 100%;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    -webkit-box-shadow: inset 0 0 20px #ab6c00; /* Safari 3.1-5.0, Chrome 4.0-9.0 */
+    -moz-box-shadow: inset 0 0 20px #ab6c00; /* Firefox 3.5-4.0 */
+    box-shadow: inset 0 0 20px #ab6c00;
 }
