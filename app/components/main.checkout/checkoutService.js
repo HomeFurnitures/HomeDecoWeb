@@ -2,26 +2,23 @@
     'use strict';
 
     angular.module('HomeDeco')
-        .factory('LoginService', LoginService);
+        .service('CheckoutService', CheckoutService);
 
-    LoginService.$inject = ['$q', '$http', 'constants'];
+    CheckoutService.$inject = [ '$http', '$q', 'constants' ];
 
-    function LoginService($q, $http, constants) {
+    function CheckoutService( $http, $q, constants ) {
         var service = {};
-        service.login = login;
- 
+        service.checkout = checkout;
+
         return service;
 
-        function login(username, password) {
+        function checkout(data) {
             var defer = $q.defer();
 
             $http({
                 method: 'POST',
-                url: constants.publicUrl + "/login",
-                data: {
-                    'Username' : username,
-                    'Password' : password
-                }
+                url: constants.publicUrl + "/checkout",
+                data: data
             }).then(
                 function successCallback(response) {
                     defer.resolve(response.data);
@@ -32,7 +29,6 @@
             );
 
             return defer.promise
-        }        
+        }
     }
-
 })();

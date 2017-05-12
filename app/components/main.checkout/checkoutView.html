@@ -1,0 +1,101 @@
+<div id="checkout-container" class="page-container">
+    <!-- Shows when cart is empty -->
+    <div ng-show="vm.isCartEmpty">
+        <div>Your cart is empty!</div>
+    </div>
+
+    <!-- Shows when cart is not empty -->
+    <div class="row" id="cart" ng-hide="vm.isCartEmpty">
+        <div ng-hide="vm.custom" class="col-md-6">
+            <div class="row checkout-product" style="font-weight: bold">
+                <div class="col-md-2">Name</div>
+                <div class="col-md-6">Description</div>
+                <div class="col-md-1">Quantity</div>
+                <div class="col-md-1">Price</div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row checkout-product" ng-repeat="product in vm.cart | filter : vm.srch.name">
+                <div class="col-md-2">{{product.data.Name}}</div>
+                <div class="col-md-6">{{product.data.ShortDescription}}</div>
+                <div class="col-md-1">{{product.quantity}}</div>
+                <div class="col-md-1">{{product.data.Price * product.quantity}}</div>
+                <div class="col-md-2">
+                    <button class="btn btn-danger" ng-click="vm.removeFromCart(product.id)">-</button>
+                    <button class="btn btn-success" ng-click="vm.addToCart(product.id)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6" ng-show="vm.custom">
+            <label>Σχήμα καναπέ</label><br>
+            <div class="sofa sofa-{{vm.customOrder.sofa}}"></div><br>
+            <label>Ποδαράκια καναπέ</label><br>
+            <div class="sofa-leg {{vm.customOrder.sofaLeg}}"></div><br>
+            <label>Ύφασμα καναπέ</label><br>
+            <div class="fabric-sample fabric-sample-medium-swatch-{{vm.customOrder.fabric}}"></div><br>
+            <label>Ύφασμα μαξιλαριών</label><br>
+            <div class="fabric-sample fabric-sample-medium-swatch-{{vm.customOrder.pillow}}"></divclass></div>
+        </div>
+
+        <div class="col-md-6" id="checkout-form" class="form">
+            <div class="input-group">
+                <label class="input-group-addon" for="full-name">Full Name</label>
+                <input class="form-control" id="full-name" name="full-name" type="text"
+                       ng-model="vm.orderDetails.FullName" required/>
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon" for="email">e-mail</label>
+                <input class="form-control" id="email" name="email" type="email" ng-model="vm.orderDetails.Email"
+                       required/>
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon" for="ship-address">Shipping Address</label>
+                <input class="form-control" id="ship-address" name="ship-address" type="text"
+                       ng-model="vm.orderDetails.ShipAddress" required/>
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon" for="bil-address">Billing Address</label>
+                <input class="form-control" id="bil-address" name="bil-address" type="text"
+                       ng-model="vm.orderDetails.BilAddress" required/>
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon" for="city">City</label>
+                <input class="form-control" id="city" name="city" type="text" ng-model="vm.orderDetails.City" required/>
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon" for="state">State</label>
+                <input class="form-control" id="state" name="state" type="text" ng-model="vm.orderDetails.State"
+                       required/>
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon" for="country">Country</label>
+                <input class="form-control" id="country" name="country" type="text" ng-model="vm.orderDetails.Country"
+                       required/>
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon" for="postal-code">Postal Code</label>
+                <input class="form-control" id="postal-code" name="postal-code" type="text"
+                       ng-model="vm.orderDetails.PostalCode" required/>
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon" for="mobile-phone">Mobile Phone</label>
+                <input class="form-control" id="mobile-phone" name="mobile-phone" type="text"
+                       ng-model="vm.orderDetails.MobilePhone" required/>
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon" for="phone">Phone</label>
+                <input class="form-control" id="phone" name="phone" type="text" ng-model="vm.orderDetails.Phone"/>
+            </div>
+            <div class="input-group">
+                <label class="input-group-addon" for="shipping-method">Shipping Method</label>
+                <select class="form-control"
+                        id="shipping-method"
+                        name="shipping-method"
+                        ng-model="vm.orderDetails.ShippingMethod"
+                        ng-options="x for x in vm.methods">
+                </select>
+            </div>
+            <button class="btn btn-success" ng-click="vm.order()">Ολοκρήρωση Παραγγελίας</button>
+        </div>
+    </div>
+</div>

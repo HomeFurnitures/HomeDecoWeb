@@ -1,9 +1,9 @@
 <div id="product-collection-container" class="page-container">
-    <div style="border: 1px solid #232323; margin: 20px; display:inline-block; text-align: center;"
-         ng-repeat="product in vm.products" >
-        <h2 ng-click="vm.openProduct(product.ProductID)">{{product.Name}}</h2>
-        <div ng-click="vm.openProduct(product.ProductID)"><img ng-src="http://83.212.107.169{{product.Thumbnail}}"></div>
+    <div class="loader" ng-show="vm.loader"><div class="loader-icon"></div></div>
+    <div class="product" ng-repeat="product in vm.products | filter : srch.name" >
+        <h2 class="hoverHand" ng-click="vm.openProduct(product.ProductID)">{{product.Name}}</h2>
+        <div class="hoverHand" ng-click="vm.openProduct(product.ProductID)"><img ng-src="http://83.212.101.162/{{product.Thumbnail}}"></div>
         <div>{{product.Price}} €</div>
-        <button ng-click="vm.addToCart(product.ProductID)">add to cart</button>
+        <button class="btn btn-primary" style="margin-bottom: 10px" ng-click="vm.addToCart(product.ProductID, product)">Προσθήκη στο καλάθι <span class="glyphicon glyphicon-shopping-cart"></span></button>
     </div>
 </div>

@@ -1,8 +1,42 @@
 <div class="tab-container no-select">
-    <div ng-repeat="tab in vm.tabs" ng-click="vm.openTab(tab.state)" class="tab" ng-class="{'active': tab.state == vm.activeTab}">
+    <div ng-repeat="tab in vm.tabs" ng-click="vm.openTab(tab.state)" class="tab"
+         ng-class="{'active': tab.state == vm.activeTab || tab.state2 == vm.activeTab}">
         <div class="tab-content">{{tab.name}}</div>
     </div>
+    <button class="btn btn-primary" ng-click="vm.goToLogin()">login</button>
+    <button ng-click="vm.goToRegister()">Register</button>
+</div>
+
+<div class="side-nav no-select">
+    <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input ng-keypress="vm.onEnterSrch($event)" ng-model="vm.input" placeholder="search" type="text" class="form-control" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+                <button class="btn btn-default" ng-click="vm.filter()"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+    </form>
+    <div>Γραφείο</div>
+    <ul>
+        <li>Αποθήκευση γραφείου</li>
+        <li>Γραφεία</li>
+        <li>Καρέκλες γραφείου</li>
+    </ul>
+    <div>Καθιστικό</div>
+    <ul>
+        <li>Έπιπλα τηλεόρασης</li>
+        <li>Καναπέδες</li>
+        <li>Τραπέζια σαλονιού</li>
+    </ul>
+    <div>Υπνοδωμάτιο</div>
+    <ul>
+        <li>Κρεβάτια</li>
+        <li>Ντουλάπες</li>
+        <li>Συρταριέρες αποθήκευσης</li>
+    </ul>
 </div>
 
 <!-- MAIN CONTENT -->
-<div ui-view class="view-container"></div>
+<div ui-view class="view-container">
+
+</div>

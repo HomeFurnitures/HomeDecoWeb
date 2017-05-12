@@ -9,5 +9,9 @@
     function HomeController () {
         var vm = this;
         vm.greet = 'Welcome to home deco!';
+
+        // $scope.$on('$viewContentLoaded', function(){
+        //     //disable loader
+        // });
     }
 })();

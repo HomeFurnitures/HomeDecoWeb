@@ -1,4 +1,5 @@
 <div id="product-container" class="page-container">
+    <div class="loader" ng-show="vm.loader"><div class="loader-icon"></div></div>
     <table>
         <tr>
             <th>image</th>
@@ -6,16 +7,18 @@
             <th>price</th>
             <th>description</th>
             <th>short desc</th>
-            <th>category id</th>
+            <th>category</th>
+            <th></th>
             <th>SKU</th>
         </tr>
         <tr>
-            <td><img ng-src="http://83.212.107.169{{vm.product.Thumbnail}}"></td>
+            <td><img ng-src="http://83.212.101.162/{{vm.product.Image}}"></td>
             <td>{{vm.product.Name}}</td>
             <td>{{vm.product.Price}}</td>
             <td>{{vm.product.Description}}</td>
             <td>{{vm.product.ShortDescription}}</td>
-            <td>{{vm.product.CategoryID}}</td>
+            <td>{{vm.product.MainCategory}}</td>
+            <td>{{vm.product.SubCategory}}</td>
             <td>{{vm.product.SKU}}</td>
         </tr>
     </table>

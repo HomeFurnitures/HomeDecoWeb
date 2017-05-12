@@ -4,17 +4,19 @@
     angular.module('HomeDeco')
         .controller('ProductCollectionController', ProductCollectionController);
 
-    ProductCollectionController.$inject = ['$state', 'ProductCollectionService', 'CartService'];
+    ProductCollectionController.$inject = ['$scope', '$state', 'ProductCollectionService', 'CartService'];
 
-    function ProductCollectionController($state, ProductCollectionService, CartService) {
+    function ProductCollectionController($scope, $state, ProductCollectionService, CartService) {
         var vm = this;
         vm.products = [];
         vm.openProduct = openProduct;
         vm.addToCart = addToCart;
+        vm.loader = true;
 
         ProductCollectionService.getProducts().then(
             function (data) {
                 vm.products = data;
+                vm.loader = false;
             },
             function (error) {
                 console.log(error);
@@ -25,9 +27,8 @@
             $state.go('main.product', {"id": id});
         }
 
-        function addToCart(id) {
-            CartService.addProduct(id);
-            console.log(CartService.getCart());
+        function addToCart(id, product) {
+            CartService.addProduct(id, product);
         }
     }
 })();

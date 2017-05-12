@@ -33,7 +33,6 @@
         function getItem(name) {
             var value = sessionStorage.getItem(name);
 
-            //prevent crash when trying to parse json from a string
             try {
                 value = JSON.parse(value);
             }

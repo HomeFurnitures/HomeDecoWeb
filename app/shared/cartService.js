@@ -12,9 +12,24 @@
         cart.removeProduct = removeProduct;
         cart.getCart = getCart;
         cart.emptyCart = emptyCart;
+        cart.setCustom = setCustom;
+        cart.getCustom = getCustom;
+        cart.removeCustom = removeCustom;
         return cart;
 
-        function addProduct(id) {
+        function setCustom(data) {
+            Storage.setItem('custom', data);
+        }
+
+        function getCustom() {
+            return  Storage.getItem('custom');
+        }
+
+        function removeCustom() {
+            Storage.removeItem('custom');
+        }
+
+        function addProduct(id, data) {
             var product = {};
             var cart = Storage.getItem('cart');
             var itemInCart = false;
@@ -28,6 +43,7 @@
             if (!itemInCart) {
                 product.id = id;
                 product.quantity = 1;
+                product.data = data;
                 Storage.pushItem('cart', product);
             }
             else {
@@ -51,8 +67,12 @@
                     }
                 }
             });
-
-            Storage.setItem('cart', cart);
+            if (cart.length < 1) {
+                emptyCart();
+            }
+            else {
+                Storage.setItem('cart', cart);
+            }
         }
 
         function emptyCart() {

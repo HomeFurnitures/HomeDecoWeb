@@ -4,17 +4,51 @@
     angular.module('HomeDeco')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$state', 'constants'];
+    MainController.$inject = ['$scope', '$state', 'constants'];
 
-    function MainController($state, constants) {
+    function MainController($scope, $state, constants) {
         var vm = this;
         vm.tabs = constants.tabs;
-        vm.activeTab = $state.current.name;
         vm.openTab = openTab;
+        vm.goToLogin = goToLogin;
+        vm.goToRegister = goToRegister;
+        vm.filter = filter;
+        vm.onEnterSrch = onEnterSrch;
+        $scope.srch = {};
+
+
+        $scope.$on('$viewContentLoaded', function() {
+
+            vm.activeTab = $state.current.name;
+        });
+
+        function onEnterSrch($event) {
+            var keyCode = $event.which || $event.keyCode;
+            if (keyCode === 13) {
+                filter();
+            }
+        }
+
+        function filter() {
+           if ($state.current.name != 'main.productCollection') {
+                $state.go('main.productCollection');
+           }
+            $scope.srch.name = vm.input;
+        }
 
         function openTab(state) {
+            $scope.srch = {};
             $state.go(state);
-            vm.activeTab = state;
+        }
+
+        function goToLogin() {
+            $scope.srch = {};
+            $state.go('main.login');
+        }
+
+        function goToRegister() {
+            $scope.srch = {};
+            $state.go('main.register');
         }
     }
 })();

@@ -18,28 +18,21 @@
 
         function request(config) {
 
-            if (!$rootScope.auth) {
+            if (config.url.indexOf('login') > -1) {
 
-                return config
             }
 
-            var page = constants.restrictedPages[config.method];
+           /* var page = constants.restrictedPages[config.method];
             var isRestricted = false;
             angular.forEach(page, function (value) {
-                if (config.url.indexOf(value) > -1) {
-                    isRestricted = true;
-                }
+
             });
 
             if (isRestricted) {
-                angular.forEach($rootScope.auth.header, function (value, key) {
-                    config.headers[key] = value;
-                });
-            }
 
-            console.log('request info', config);
-            console.log('restricted', constants.restrictedPages);
-            console.log('root', $rootScope);
+            }*/
+
+
             return config;
         }
 
@@ -53,9 +46,9 @@
         }
 
         function responseError(res) {
-            if (res.status === 401) {
+           /* if (res.status === 401) {
                 console.log('401', res);
-            }
+            }*/
             return res;
         }
     }

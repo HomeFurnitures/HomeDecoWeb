@@ -1,0 +1,64 @@
+<div id="register-container" class="page-container">
+    <div class="loader" ng-show="vm.loader"><div class="loader-icon"></div></div>
+    <div id="register-form" class="form">
+        <div>
+            <label for="first-name">First Name<span class="important">*</span> </label>
+            <input id="first-name" name="first-name" type="text" ng-model="vm.userData.FirstName" required/>
+        </div>
+        <div>
+            <label for="last-name">Last Name<span class="important">*</span> </label>
+            <input id="last-name" name="last-name" type="text" ng-model="vm.userData.LastName" required/>
+        </div>
+        <div>
+            <label for="email">e-mail<span class="important">*</span> </label>
+            <input id="email" name="email" type="email" ng-model="vm.user.Email" required/>
+        </div>
+        <div>
+            <label for="username">Username<span class="important">*</span> </label>
+            <input id="username" name="username" type="text" ng-model="vm.user.Username" required/>
+        </div>
+        <div>
+            <label for="password">Password<span class="important">*</span> </label>
+            <input id="password" name="password" type="password" ng-model="vm.user.Password" required/>
+        </div>
+        <div>
+            <label for="confirm-password">Confirm Password<span class="important">*</span> </label>
+            <input id="confirm-password" name="confirm-password" type="password" ng-model="vm.confirmPassword"
+                   required
+                   compare-to="vm.user.Password"/>
+        </div>
+        <div>
+            <label for="birthday">Birthday<span class="important">*</span> </label>
+            <input id="birthday" name="birthday" type="date" ng-model="vm.userData.Birthday" required/>
+        </div>
+        <div>
+            <label for="address">Address</label>
+            <input id="address" name="address" type="text" ng-model="vm.userData.Address"/>
+        </div>
+        <div>
+            <label for="city">City</label>
+            <input id="city" name="city" type="text" ng-model="vm.userData.City"/>
+        </div>
+        <div>
+            <label for="state">State</label>
+            <input id="state" name="state" type="text" ng-model="vm.userData.State"/>
+        </div>
+        <div>
+            <label for="country">Country</label>
+            <input id="country" name="country" type="text" ng-model="vm.userData.Country"/>
+        </div>
+        <div>
+            <label for="postal-code">Postal Code</label>
+            <input id="postal-code" name="postal-code" type="text" ng-model="vm.userData.PostalCode"/>
+        </div>
+        <div>
+            <label for="mobile-phone">Mobile Phone</label>
+            <input id="mobile-phone" name="mobile-phone" type="text" ng-model="vm.userData.MobilePhone"/>
+        </div>
+        <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="text" ng-model="vm.userData.Phone"/>
+        </div>
+        <button ng-click="vm.register()">Register</button>
+    </div>
+</div>

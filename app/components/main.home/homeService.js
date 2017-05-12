@@ -4,9 +4,9 @@
     angular.module('HomeDeco')
         .service('HomeService', HomeService);
 
-    HomeService.$inject = [ '$http', '$q', 'hostUrl' ];
+    HomeService.$inject = [ '$http', '$q', 'constants' ];
 
-    function HomeService( $http, $q, hostUrl ) {
+    function HomeService( $http, $q, constants ) {
         
     }    
 })();

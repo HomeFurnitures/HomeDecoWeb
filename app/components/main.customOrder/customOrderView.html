@@ -1,0 +1,48 @@
+<div id="custom-order-container" class="page-container">
+    <div class="loader" ng-show="vm.loader"><div class="loader-icon"></div></div>
+    <div>
+        <!--<label>Διάλεξε έπιπλο</label>-->
+        <!--<select ng-model="vm.order.furniture">-->
+            <!--<option ng-repeat="x in vm.furnitures" value="{{x.name}}">{{x.greek}}</option>-->
+        <!--</select>-->
+    </div>
+    <!--<div ng-show="vm.order.furniture == 'sofa'">-->
+    <div>
+        <label>Διάλεξε σώμα για τον καναπέ</label>
+        <div>
+            <div class="sofa sofa-{{x.name}}"
+                 ng-repeat="x in vm.sofas"
+                 ng-class="{'selected-box': vm.order.sofa == x.name}"
+                 ng-click="vm.selectSofa(x.name)">
+            </div>
+        </div>
+
+        <label>Διάλεξε ύφασμα για τον καναπέ</label>
+        <div>
+            <div class="fabric-sample fabric-sample-medium-swatch-{{x.fabric}}"
+                 ng-repeat="x in vm.fabrics"
+                 ng-class="{'selected-box': vm.order.fabric == x.fabric}"
+                 ng-click="vm.selectFabric(x.fabric)">
+            </div>
+        </div>
+
+        <label>Διάλεξε ύφασμα για τα μαξιλάρια</label>
+        <div>
+            <div class="fabric-sample fabric-sample-medium-swatch-{{x.fabric}}"
+                 ng-repeat="x in vm.fabrics"
+                 ng-class="{'selected-box': vm.order.pillow == x.fabric}"
+                 ng-click="vm.selectPillow(x.fabric)">
+            </div>
+        </div>
+
+        <label>Διάλεξε ποδαράκια για τον καναπέ</label>
+       <div>
+            <div class="sofa-leg {{x.name}}"
+                 ng-repeat="x in vm.sofaLegs"
+                 ng-class="{'selected-box': vm.order.sofaLeg == x.name}"
+                 ng-click="vm.selectSofaLeg(x.name)">
+            </div>
+        </div>
+        <button class="btn btn-success" ng-click="vm.goToOrder()">Παραγγελία</button>
+    </div>
+</div>

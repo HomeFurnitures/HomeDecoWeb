@@ -8,6 +8,6 @@
       
     function AboutController () {
         var vm = this;        
-		vm.about = 'agular main.home deco';		
+		vm.about = 'agular node app';		
     }
 })();

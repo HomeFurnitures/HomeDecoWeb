@@ -17,7 +17,10 @@
 
             $http({
                 method: 'GET',
-                url: constants.publicUrl + "/product"
+                url: constants.publicUrl + "/product",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }).then(
                 function successCallback(response) {
                     defer.resolve(response.data);

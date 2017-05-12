@@ -1,0 +1,318 @@
+@import "variables";
+@import "mixins";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.no-select {
+  @include user-select(none);
+}
+
+.hoverHand:hover {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/**
+ * Tab menu
+ */
+
+.tab-container {
+  height: 45px;
+  padding: 0 0 0 25px;
+}
+
+.tab {
+  width: 200px;
+  height: 45px;
+  position: relative;
+  //top: 1px;
+  display: inline-block;
+  background: $tabColor;
+  border-bottom: 0 none;
+  cursor: pointer;
+  text-shadow: $tabTextShadow;
+  @include border-radius(10px 10px 0 0);
+  @include transform(perspective(100px) rotateX(30deg));
+  @include box-shadow(
+                  inset 0 3px 3px -3px $tabOutlineColor,
+                  inset 3px 0 3px -3px $tabOutlineColor,
+                  inset -3px 0 3px -3px $tabOutlineColor
+  );
+
+  .tab-content {
+    position: relative;
+    top: 15px;
+    text-align: center;
+    color: $tabTextColor;
+    font-size: 14pt;
+    @include transform(perspective(100px) rotateX(-27deg));
+  }
+
+  &.active {
+    box-sizing: content-box;
+    background-color: $activeTabColor;
+    padding: 0 0 1px 0;
+    cursor: default;
+    z-index: 2;
+    @include border-radius(10px 10px 2px 2px);
+    @include box-shadow(0 0 0 0 transparent);
+
+    .tab-content {
+      color: $activeTabTextColor;
+      text-shadow: $activeTabTextShadow;
+    }
+  }
+
+  &:hover {
+
+  }
+}
+
+/**
+ * Tab page
+ */
+
+.view-container {
+  border-top: 10px solid $activeTabColor;
+  z-index: 1;
+  @include calc(height, '100% - 60px');
+  padding-left: 200px;
+}
+
+.page-container {
+  width: 100%;
+  height: 100%;
+  background-color: $tabPageColor;
+  @include box-shadow(inset 0 20px 20px -20px $activeTabColor);
+}
+
+/* Loader */
+
+.loader {
+  background: #ffffff;
+  position: absolute;
+  top: 55px;
+  bottom: 0;
+  left: 200px;
+  right: 0;
+  @include box-shadow(inset 0 20px 20px -20px $activeTabColor);
+  z-index: 2;
+}
+
+@include keyframes(spinner) {
+  from {
+    @include transform(rotateY(0deg));
+  }
+  to {
+    @include transform(rotateY(-360deg));
+  }
+}
+
+.loader-icon {
+  background: url(../images/red-round-home.png);
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -75px;
+  @include animation-name(spinner);
+  @include animation-timing-function(linear);
+  @include animation-iteration-count(infinite);
+  @include animation-duration(2s);
+  @include transform-style(preserve-3d);
+}
+
+/**
+ * Side Nav
+ */
+
+.side-nav {
+  position: absolute;
+  top: 55px;
+  background: $lightClr;
+  width: 200px;
+  @include calc(height, '100% - 55px')
+}
+
+/**
+ * Products
+ */
+
+#product-collection-container {
+  text-align: center;
+}
+
+.product {
+  margin: 20px;
+  display: inline-block;
+  text-align: center;
+  @include box-shadow(0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23));
+}
+
+/**
+ * Checkout
+ */
+
+#checkout-container {
+  padding: 25px 200px 0 200px;
+}
+
+#cart {
+  text-align: center;
+}
+
+.checkout-product {
+  @include box-shadow(0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23));
+  div {
+    padding: 5px;
+  }
+}
+
+#checkout-form {
+  .input-group {
+    margin-bottom: 10px;
+  }
+}
+
+/**
+ * Custom order
+ */
+
+.sofa {
+  height: 90px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.sofa-2_4_bed {
+  background: url("http://83.212.101.162/images/sofa/2_4_bed.png");
+  width: 195px;
+}
+
+.sofa-2_4_corner {
+  background: url("http://83.212.101.162/images/sofa/2_4_corner.png");
+  width: 238px;
+}
+
+.sofa-2_5_seat_sofas {
+  background: url("http://83.212.101.162/images/sofa/2_5_seat_sofas.png");
+  width: 150px;
+}
+
+.sofa-3_seat_sofas {
+  background: url("http://83.212.101.162/images/sofa/3_seat_sofas.png");
+  width: 212px;
+}
+
+.sofa-4_6_bed {
+  background: url("http://83.212.101.162/images/sofa/4_6_bed.png");
+  width: 214px;
+}
+
+.sofa-4_6_corner {
+  background: url("http://83.212.101.162/images/sofa/4_6_corner.png");
+  width: 253px;
+}
+
+.sofa-4_seat_sofas {
+  background: url("http://83.212.101.162/images/sofa/4_seat_sofas.png");
+  width: 239px;
+}
+
+.sofa-6_9_corner {
+  background: url("http://83.212.101.162/images/sofa/6_9_corner.png");
+  width: 308px;
+}
+
+.sl-1 {
+  background: url("http://83.212.101.162/images/sofa/sl-1.png");
+}
+
+.sl-2 {
+  background: url("http://83.212.101.162/images/sofa/sl-2.png");
+}
+
+.sl-5 {
+  background: url("http://83.212.101.162/images/sofa/sl-5.png");
+}
+
+.sl-3 {
+  background: url("http://83.212.101.162/images/sofa/sl-3.png");
+}
+
+.sl-4 {
+  background: url("http://83.212.101.162/images/sofa/sl-5.png");
+}
+
+.sl-6 {
+  background: url("http://83.212.101.162/images/sofa/sl-6.png");
+}
+
+.sl-7 {
+  background: url("http://83.212.101.162/images/sofa/sl-7.png");
+}
+
+.sl-8 {
+  background: url("http://83.212.101.162/images/sofa/sl-8.png");
+}
+
+.sofa-leg {
+  width: 90px;
+  height: 90px;
+  background-size: cover;
+  margin: 10px;
+  display: inline-block;
+}
+
+.fabric-sample {
+  display: inline-block;
+  width: 149px;
+  height: 90px;
+  background: url("http://83.212.101.162/images/sofa/fabric-sample-medium-swatch.gif") left top no-repeat scroll;
+  background-size: cover;
+  text-align: center;
+  margin: 10px;
+}
+
+.fabric-sample-medium-swatch-2 {
+  background-position: 0px -0px;
+}
+
+.fabric-sample-medium-swatch-3 {
+  background-position: 0px -90px;
+}
+
+.fabric-sample-medium-swatch-4 {
+  background-position: 0px -180px;
+}
+
+.fabric-sample-medium-swatch-5 {
+  background-position: 0px -270px;
+}
+
+.fabric-sample-medium-swatch-6 {
+  background-position: 0px -360px;
+}
+
+.fabric-sample-medium-swatch-22 {
+  background-position: 0px -630px;
+}
+
+.selected-box {
+  box-shadow: 0 0 3px black;
+}

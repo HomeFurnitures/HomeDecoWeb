@@ -5,7 +5,7 @@
 
 # User-specific stuff:
 .idea
-
+.idea/HomeDecoWeb.iml
 ## File-based project format:
 *.iws
 
@@ -113,6 +113,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-images
+### NPM template
+node_modules
+*.log
+
+## SASS
+css
+
+img
 grid
-!favicon

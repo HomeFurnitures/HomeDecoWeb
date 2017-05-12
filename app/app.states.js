@@ -8,20 +8,13 @@
     function InitStates($stateProvider, $urlRouterProvider) {
 
         // Any unknown URLS go to index
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/home');
 
         // No route goes to index
-        $urlRouterProvider.when('', '/');
+        $urlRouterProvider.when('', '/home');
 
         // Use a state provider for routing
         $stateProvider
-            .state('login', {
-                url: '/login',
-                templateUrl: 'app/components/login/loginView.html',
-                controller: 'LoginController',
-                controllerAs: 'vm'
-            })
-            
             .state('main', {
                 url: '',
                 abstract: true,
@@ -53,6 +46,34 @@
                 url: '/product/:id',
                 templateUrl: 'app/components/main.product/productView.html',
                 controller: 'ProductController',
+                controllerAs: 'vm'
+            })
+
+            .state('main.checkout', {
+                url: '/checkout',
+                templateUrl: 'app/components/main.checkout/checkoutView.html',
+                controller: 'CheckoutController',
+                controllerAs: 'vm'
+            })
+
+            .state('main.customOrder', {
+                url: '/custom-order',
+                templateUrl: 'app/components/main.customOrder/customOrderView.html',
+                controller: 'CustomOrderController',
+                controllerAs: 'vm'
+            })
+
+            .state('main.login', {
+                url: '/login',
+                templateUrl: 'app/components/main.login/loginView.html',
+                controller: 'LoginController',
+                controllerAs: 'vm'
+            })
+
+            .state('main.register', {
+                url: '/register',
+                templateUrl: 'app/components/main.register/registerView.html',
+                controller: 'RegisterController',
                 controllerAs: 'vm'
             })
 
